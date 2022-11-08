@@ -22,7 +22,7 @@ void veco_update_size(veco* d) {
     // Go to the beginning of the file
     fseek(d->data, 0, SEEK_SET);
     // Update the current value of n in the file
-    fwrite(&(d->n), sizeof(long), 1, d->data);
+    fwrite(&d->n, sizeof(long), 1, d->data);
     // Go back to where we were before the operation
     veco_seek(d, ind);
 }
@@ -46,7 +46,7 @@ void veco_write(veco* d, const void* vecs, long num_vecs) {
     fwrite(vecs, d->elem_size * d->dim, num_vecs, d->data);
     // Update the number of vectors if necessary
     if (ind + num_vecs > d->n) {
-        d->n = ind;
+        d->n = ind + num_vecs;
         veco_update_size(d);
     }
 }

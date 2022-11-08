@@ -5,7 +5,7 @@
 
 int main() {
     // Have 100 vectors (double type) of dimension 10
-    veco* d = veco_new("foo.bin", 100, 10, sizeof(double));
+    veco* d = veco_new("foo.bin", 0, 10, sizeof(double));
     double x[10];
     for (int i = 0; i < 100; ++i) {
         for (int j = 0; j < 10; ++j) {
